@@ -32,6 +32,7 @@ const ScrollArea = React.forwardRef<
           ref={ref}
           {...props}
           role="group"
+          data-slot="scroll-area"
           aria-roledescription="scroll area"
           className={cn("relative overflow-hidden", className)}
         >
@@ -40,8 +41,13 @@ const ScrollArea = React.forwardRef<
           </div>
         </div>
       ) : (
-        <ScrollAreaPrimitive.Root ref={ref} className={cn("relative overflow-hidden", className)} {...props}>
-          <ScrollAreaPrimitive.Viewport className="size-full rounded-[inherit]">
+        <ScrollAreaPrimitive.Root
+          ref={ref}
+          data-slot="scroll-area"
+          className={cn("relative overflow-hidden", className)}
+          {...props}
+        >
+          <ScrollAreaPrimitive.Viewport data-slot="scroll-area-viewport" className="size-full rounded-[inherit]">
             {children}
           </ScrollAreaPrimitive.Viewport>
           <ScrollBar />
@@ -66,6 +72,7 @@ const ScrollBar = React.forwardRef<
     <ScrollAreaPrimitive.Scrollbar
       ref={ref}
       orientation={orientation}
+      data-slot="scroll-area-scrollbar"
       className={cn(
         "hover:bg-muted dark:hover:bg-muted/50 flex touch-none p-px transition-[colors,opacity] duration-150 ease-out select-none",
         orientation === "vertical" && "h-full w-2.5 border-l border-l-transparent",
@@ -77,6 +84,7 @@ const ScrollBar = React.forwardRef<
       {...props}
     >
       <ScrollAreaPrimitive.Thumb
+        data-slot="scroll-area-thumb"
         className={cn(
           "bg-border relative flex-1 rounded-full transition-[scale]",
           orientation === "vertical" && "my-1 hover:scale-y-110 active:scale-y-95",
