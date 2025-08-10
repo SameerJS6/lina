@@ -3,8 +3,6 @@ import { ScrollAreaDemo as BaseUIScrollAreaDemo } from "@/registry/base-ui/examp
 import { ScrollAreaHorizontalDemo as RadixScrollAreaHorizontalDemo } from "@/registry/radix-ui/examples/horizontal-scroll";
 import { ScrollAreaDemo as RadixScrollAreaDemo } from "@/registry/radix-ui/examples/vertical-scroll";
 
-import { NativeScrollareaDemo } from "@/components/native-demo";
-
 export default function Home() {
   return (
     <main className="flex min-h-dvh flex-wrap items-center justify-center gap-4 py-6">
@@ -16,10 +14,6 @@ export default function Home() {
       <div className="flex size-full flex-wrap justify-center gap-4">
         <BaseUIScrollAreaDemo />
         <BaseUIScrollAreaHorizontalDemo />
-      </div>
-
-      <div className="flex size-full flex-wrap justify-center gap-4">
-        <NativeScrollareaDemo />
       </div>
     </main>
   );
