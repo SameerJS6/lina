@@ -41,7 +41,7 @@ const ScrollArea = React.forwardRef<
         </div>
       ) : (
         <ScrollAreaPrimitive.Root ref={ref} className={cn("relative overflow-hidden", className)} {...props}>
-          <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+          <ScrollAreaPrimitive.Viewport className="size-full rounded-[inherit]">
             {children}
           </ScrollAreaPrimitive.Viewport>
           <ScrollBar />
@@ -67,9 +67,9 @@ const ScrollBar = React.forwardRef<
       ref={ref}
       orientation={orientation}
       className={cn(
-        "hover:bg-muted dark:hover:bg-muted/50 flex touch-none transition-[colors,opacity] duration-150 ease-out select-none",
-        orientation === "vertical" && "h-full w-2.5 border-l border-l-transparent p-[1px]",
-        orientation === "horizontal" && "h-2.5 flex-col border-t border-t-transparent p-[1px]",
+        "hover:bg-muted dark:hover:bg-muted/50 flex touch-none p-px transition-[colors,opacity] duration-150 ease-out select-none",
+        orientation === "vertical" && "h-full w-2.5 border-l border-l-transparent",
+        orientation === "horizontal" && "h-2.5 flex-col border-t border-t-transparent px-1 pr-1.25",
         type === "hover" && "opacity-0 data-[hovering]:opacity-100",
         type === "scroll" && "opacity-0 data-[scrolling]:opacity-100",
         className
@@ -77,7 +77,11 @@ const ScrollBar = React.forwardRef<
       {...props}
     >
       <ScrollAreaPrimitive.Thumb
-        className={cn("bg-border relative flex-1 rounded-full", orientation === "vertical" && "my-1")}
+        className={cn(
+          "bg-border relative flex-1 rounded-full transition-[scale]",
+          orientation === "vertical" && "my-1 hover:scale-y-110 active:scale-y-95",
+          orientation === "horizontal" && "hover:scale-x-102 active:scale-x-98"
+        )}
       />
     </ScrollAreaPrimitive.Scrollbar>
   );
