@@ -13,7 +13,7 @@ const ScrollAreaContext = React.createContext<boolean>(false);
 const ScrollArea = React.forwardRef<
   React.ComponentRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, ...props }, ref) => {
+>(({ className, children, scrollHideDelay = 0, ...props }, ref) => {
   const isTouch = useTouchPrimary();
 
   return (
@@ -35,6 +35,7 @@ const ScrollArea = React.forwardRef<
         <ScrollAreaPrimitive.Root
           ref={ref}
           data-slot="scroll-area"
+          scrollHideDelay={scrollHideDelay}
           className={cn("relative overflow-hidden", className)}
           {...props}
         >
