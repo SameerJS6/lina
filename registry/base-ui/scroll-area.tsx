@@ -21,8 +21,9 @@ const ScrollArea = React.forwardRef<
   React.ComponentRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
     type?: "auto" | "always" | "scroll" | "hover";
+    viewportClassName?: string;
   }
->(({ className, children, type = "hover", ...props }, ref) => {
+>(({ className, children, type = "hover", viewportClassName, ...props }, ref) => {
   const isTouch = useTouchPrimary();
 
   return (
@@ -36,7 +37,7 @@ const ScrollArea = React.forwardRef<
           aria-roledescription="scroll area"
           className={cn("relative overflow-hidden", className)}
         >
-          <div className={cn("size-full overflow-auto", className)} tabIndex={0}>
+          <div className="size-full overflow-auto" tabIndex={0}>
             {children}
           </div>
         </div>
@@ -44,10 +45,13 @@ const ScrollArea = React.forwardRef<
         <ScrollAreaPrimitive.Root
           ref={ref}
           data-slot="scroll-area"
-          className={cn("relative overflow-hidden", className)}
+          className={cn("relative overflow-hidden", viewportClassName, className)}
           {...props}
         >
-          <ScrollAreaPrimitive.Viewport data-slot="scroll-area-viewport" className="size-full rounded-[inherit]">
+          <ScrollAreaPrimitive.Viewport
+            data-slot="scroll-area-viewport"
+            className="focus-ring size-full rounded-[inherit]"
+          >
             {children}
           </ScrollAreaPrimitive.Viewport>
           <ScrollBar />

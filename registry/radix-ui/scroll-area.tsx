@@ -12,8 +12,10 @@ const ScrollAreaContext = React.createContext<boolean>(false);
 
 const ScrollArea = React.forwardRef<
   React.ComponentRef<typeof ScrollAreaPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, scrollHideDelay = 0, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
+    viewportClassName?: string;
+  }
+>(({ className, children, scrollHideDelay = 0, viewportClassName, ...props }, ref) => {
   const isTouch = useTouchPrimary();
 
   return (
@@ -27,7 +29,7 @@ const ScrollArea = React.forwardRef<
           className={cn("relative overflow-hidden", className)}
           {...props}
         >
-          <div className={cn("size-full overflow-auto", className)} tabIndex={0}>
+          <div className={cn("size-full overflow-auto", viewportClassName)} tabIndex={0}>
             {children}
           </div>
         </div>
