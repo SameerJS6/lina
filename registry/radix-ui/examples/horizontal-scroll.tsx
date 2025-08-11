@@ -23,7 +23,7 @@ const works: Artwork[] = [
 
 export function ScrollAreaHorizontalDemo() {
   return (
-    <ScrollArea className="w-96 rounded-md border whitespace-nowrap">
+    <ScrollArea className="bg-background w-96 rounded-md border whitespace-nowrap">
       <div className="flex w-max space-x-4 p-4">
         {works.map((artwork) => (
           <figure key={artwork.artist} className="shrink-0">
