@@ -53,18 +53,18 @@ export default function CodeBlock({ code, lang, initial, preHighlighted, classNa
   return content ? (
     <div
       className={cn(
-        "group focus-ring bg-surface relative overflow-hidden rounded-lg [&_code]:font-mono [&_code]:text-[13px] [&_pre]:p-4 [&_pre]:!leading-tight",
+        "group focus-ring bg-surface relative overflow-hidden rounded-xl [&_code]:font-mono [&_code]:text-[13px] [&_pre]:p-4 [&_pre]:!leading-tight",
         className
       )}
     >
-      <ScrollArea ref={areaRef} dir="ltr" className="focus-ring relative size-full rounded-lg">
+      <ScrollArea ref={areaRef} dir="ltr" className="focus-ring relative size-full rounded-xl">
         {content}
         <ScrollBar orientation="horizontal" className="focus-ring" />
         <CopyButton className="absolute top-2 right-2 z-[2] backdrop-blur-md" onCopy={onCopy} />
       </ScrollArea>
     </div>
   ) : (
-    <div className="bg-secondary/50 relative my-6 min-h-[500px] overflow-hidden rounded-lg border text-sm">
+    <div className="bg-secondary/50 relative my-6 min-h-[500px] overflow-hidden rounded-xl border text-sm">
       <pre className="rounded-md p-4 text-center text-sm">Loading...</pre>
     </div>
   );
