@@ -6,6 +6,7 @@ import { Loader } from "lucide-react";
 
 import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeBlock from "@/components/code-block";
+import VariantSelect from "@/components/variant-select";
 import { getComponentCode } from "@/lib/code-highlight";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +16,7 @@ type ComponentDetailsProps = {
   className?: string;
   lang?: BundledLanguage;
   align?: "center" | "start" | "end";
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>; // TODO: IMPROVE TYPE SAFETY OF SEARCH PARAMS (USE NUQS)
 };
 
 export default async function ComponentPreview({
@@ -23,9 +25,13 @@ export default async function ComponentPreview({
   lang = "tsx",
   hideCode = false,
   align = "center",
+  searchParams,
 }: ComponentDetailsProps) {
-  const codeData = await getComponentCode(name, lang);
+  const variant = (await searchParams)?.variant === "base" ? "base" : "radix";
+
   const registryEntry = Index[name];
+  const componentName = `${name}-${variant}`;
+  const codeData = await getComponentCode(componentName, lang);
 
   const Preview = !registryEntry ? (
     <p className="text-muted-foreground text-sm">
@@ -33,7 +39,7 @@ export default async function ComponentPreview({
       found in special registry.
     </p>
   ) : (
-    React.createElement(registryEntry.component)
+    React.createElement(registryEntry.variants[variant])
   );
 
   return (
@@ -59,7 +65,8 @@ export default async function ComponentPreview({
             </TabsList>
           )}
         </div>
-        <TabsContent value="preview" className="focus-ring relative rounded-lg border">
+        <TabsContent value="preview" className="focus-ring relative rounded-xl border p-4">
+          <VariantSelect currentVariant={variant} />
           <div
             className={cn("flex min-h-[350px] w-full justify-center p-10", {
               "items-center": align === "center",
@@ -79,7 +86,7 @@ export default async function ComponentPreview({
             </React.Suspense>
           </div>
         </TabsContent>
-        <TabsContent value="code" className="focus-ring rounded-lg">
+        <TabsContent value="code" className="focus-ring rounded-xl">
           {!codeData ? (
             <p className="text-muted-foreground text-sm">
               No code available. If you think this is an error, please{" "}
@@ -98,7 +105,7 @@ export default async function ComponentPreview({
               lang={lang}
               code={codeData.code}
               preHighlighted={codeData.highlightedCode}
-              className="[&_pre]:max-h-[366px]"
+              className="[&_pre]:max-h-[435px]"
             />
           )}
         </TabsContent>
