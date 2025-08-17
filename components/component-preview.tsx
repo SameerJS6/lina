@@ -43,8 +43,8 @@ export default async function ComponentPreview({
   );
 
   return (
-    <div className={cn("group relative my-4 flex flex-col space-y-2", className)}>
-      <Tabs defaultValue="preview" className="relative mr-auto w-full">
+    <div className={cn("group relative my-4 flex min-w-0 flex-col space-y-2", className)}>
+      <Tabs defaultValue="preview" className="relative w-full">
         <div className="flex items-center justify-between pb-3">
           {!hideCode && (
             <TabsList className="relative z-0 justify-start bg-transparent p-0">
