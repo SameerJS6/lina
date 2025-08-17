@@ -42,14 +42,23 @@ async function highlight(code: string, lang: BundledLanguage) {
 
 async function getComponentCode(
   name: string,
-  lang: BundledLanguage
+  lang: BundledLanguage,
+  customFilePath?: string
 ): Promise<{ code: string; highlightedCode: JSX.Element } | null> {
   try {
-    const filePath = path.join(process.cwd(), "public", "r", `${name}.json`);
-    const fileContent = await fs.readFile(filePath, "utf-8");
-    const data = JSON.parse(fileContent);
+    let rawContent = "";
 
-    const rawContent = data.files[0].content || "";
+    if (customFilePath) {
+      const filePath = path.join(process.cwd(), customFilePath);
+      rawContent = await fs.readFile(filePath, "utf-8");
+    } else {
+      const publicPath = path.join("public", "r", `${name}.json`);
+      const filePath = path.join(process.cwd(), publicPath);
+      const fileContent = await fs.readFile(filePath, "utf-8");
+      const data = JSON.parse(fileContent);
+      rawContent = data.files[0].content || "";
+    }
+
     if (!rawContent.trim()) {
       return null;
     }
