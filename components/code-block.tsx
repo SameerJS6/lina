@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState, type JSX } from "react";
-import { ScrollArea, ScrollBar } from "@/registry/base-ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/registry/radix-ui/scroll-area";
 import type { BundledLanguage } from "shiki/bundle/web";
 
 import CopyButton from "@/components/copy-button";
@@ -57,10 +57,15 @@ export default function CodeBlock({ code, lang, initial, preHighlighted, classNa
         className
       )}
     >
-      <ScrollArea ref={areaRef} dir="ltr" className="focus-ring relative size-full rounded-xl">
+      <ScrollArea
+        ref={areaRef}
+        dir="ltr"
+        maskClassName="after:from-surface before:from-surface"
+        className="focus-ring relative size-full rounded-xl"
+      >
         {content}
         <ScrollBar orientation="horizontal" className="focus-ring" />
-        <CopyButton className="absolute top-2 right-2 z-[2] backdrop-blur-md" onCopy={onCopy} />
+        <CopyButton className="absolute top-4 right-4 z-[2] backdrop-blur-md" onCopy={onCopy} />
       </ScrollArea>
     </div>
   ) : (
