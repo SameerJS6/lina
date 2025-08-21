@@ -1,13 +1,13 @@
 import Link from "next/link";
 
+import ThemeToggle from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import ThemeToggle from "@/components/theme-toggle";
 
 export default function Navbar() {
   return (
-    <header className="container border-x">
-      <nav className="flex items-center justify-between gap-4 border-x py-4">
+    <header className="container">
+      <nav className="flex items-center justify-between gap-4 py-4">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/">Lina</Link>
         </Button>
