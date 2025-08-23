@@ -1,0 +1,72 @@
+export default function Why() {
+  return (
+    <section className="p-6 lg:max-w-[750px]">
+      <div className="space-y-6">
+        <div className="space-y-1">
+          <h2 className="scroll-m-20 text-3xl font-medium tracking-tight">Why</h2>
+          <p className="text-muted-foreground leading-7">Why did I create Lina in the first place?</p>
+        </div>
+        <div className="space-y-8">
+          <div>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">The Problem</h3>
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
+              The main reason behind it was that custom scrollbar/scrollarea components looked amazing on desktop, but
+              on mobile or general touch devices, the native scrollbars were just better, and I wanted to use those
+              instead of a custom scrollbar.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">From Quick Fix to Full Component</h3>
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
+              So I wrote a simple version back at the end of 2024 while working on one of our office projects. Fast
+              forward to now, while building scrollable examples for{" "}
+              <a href="https://revola.sameerjs.com" target="_blank" rel="" className="underline underline-offset-2">
+                Revola
+              </a>
+              , I decided to turn that simple version into a full-fledged separate component. So I did.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">The Details</h3>
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
+              The initial version of Lina only had micro-interactions and native scrollable adaptation. But then I
+              started noticing the details that make interfaces feel premium.
+            </p>
+            <p className="leading-7 [&:not(:first-child)]:mt-4">
+              While using{" "}
+              <a href="https://v0.app" target="_blank" className="underline underline-offset-2">
+                v0
+              </a>
+              , I spotted this smooth mask just above the chat input, content would fade in so elegantly. That visual
+              caught my eye, and I knew I had to add it. These little touches make all the difference.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">The Goal</h3>
+            <blockquote className="mt-6 border-l-2 pl-6 italic">
+              &quot;If wer&rsquo;e going the custom ScrollArea route, why not make it look and feel purely custom,
+              refined and detailed?.&quot;
+            </blockquote>
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
+              That&rsquo;s the philosophy behind Lina. No half-measures, no compromises, just a scrolling experience
+              that feels intentionally well crafted.
+            </p>
+          </div>
+        </div>
+        {/* <p>
+        The main reason behind it was that Custom Scrollbar/Scrollarea component's looked amazing on desktop but on
+        mobile or on general touch devices, the native scrollbar were just better and I wanted to use that one instead
+        of using a custom scrollbar. So I wrote a simple version back in End of 2024, while working on one of office
+        project. Fast forward to now, while building scrollables examples for Revola, I decided to make that simple
+        version a full-flesh seperate component, So I did the intial version of Lina only had micro-interations & Native
+        scrollable adaption later on, while using v0, I noticed the smooth mask just above the chat input, smoothly
+        fading in content, I really liked that and decided to add it. So, In general the idea is, If we're going Custom
+        ScrollArea route, why not make it look and feel pure custom, refined and detailed, hence I created Lina
+      </p> */}
+      </div>
+    </section>
+  );
+}
