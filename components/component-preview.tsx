@@ -4,8 +4,8 @@ import type { BundledLanguage } from "shiki/bundle/web";
 
 import { Loader } from "lucide-react";
 
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeBlock from "@/components/code-block";
+import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import VariantSelect from "@/components/variant-select";
 import { getComponentCode } from "@/lib/code-highlight";
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ export default async function ComponentPreview({
   const variant = (await searchParams)?.variant === "base" ? "base" : "radix";
 
   const registryEntry = Index[name];
-  const componentName = `${name}-${variant}`;
+  const componentName = `${registryEntry.name}-${variant}`;
   const codeData = await getComponentCode(componentName, lang);
 
   const Preview = !registryEntry ? (
@@ -43,7 +43,7 @@ export default async function ComponentPreview({
   );
 
   return (
-    <div className={cn("group relative my-4 flex min-w-0 flex-col space-y-2", className)}>
+    <div className={cn("group relative flex min-w-0 flex-col space-y-2", className)}>
       <Tabs defaultValue="preview" className="relative w-full">
         <div className="flex items-center justify-between pb-3">
           {!hideCode && (
