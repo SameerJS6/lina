@@ -14,7 +14,7 @@ export default async function Installation({ searchParams }: InstallationProps) 
   const pathToPrimaryHook = "hooks/use-has-primary-touch.tsx";
 
   const language = "tsx";
-  const name = "scroll-area";
+  const name = "lina";
   const componentName = `${name}-${variant}`;
   const [codeData, hookCodeData] = await Promise.all([
     getComponentCode(componentName, language),
