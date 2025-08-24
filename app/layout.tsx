@@ -4,7 +4,6 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "@/app/globals.css";
 
 import Navbar from "@/components/navbar";
-import SmoothScroll from "@/components/smooth-scroll";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
@@ -37,14 +36,12 @@ export default function RootLayout({
       {/* <head>
         <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js" />
       </head> */}
-      <SmoothScroll>
-        <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}>
-          <ThemeProvider defaultTheme="system" attribute="class" enableSystem disableTransitionOnChange>
-            <Navbar />
-            {children}
-          </ThemeProvider>
-        </body>
-      </SmoothScroll>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}>
+        <ThemeProvider defaultTheme="system" attribute="class" enableSystem disableTransitionOnChange>
+          <Navbar />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
