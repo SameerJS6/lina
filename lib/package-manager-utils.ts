@@ -48,10 +48,7 @@ export function convertNpmCommand(npmCommand: string): Record<PackageManager, st
   const commands: Record<PackageManager, string> = {} as Record<PackageManager, string>;
 
   Object.entries(mappings).forEach(([pm, prefixParts]) => {
-    commands[pm as PackageManager] = [
-      ...prefixParts,
-      ...parts.slice(2), // Skip "npm" and the command itself
-    ].join(" ");
+    commands[pm as PackageManager] = [...prefixParts, ...parts.slice(2)].join(" ");
   });
 
   return commands;

@@ -36,30 +36,13 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
     setLoading(false);
   }, [setLoading]);
 
-  // const registryIndex = Index[name];
   const componentName = `${name}-${variant}`;
-  const registryURL = `https://lina.sameerjs.com/r/${componentName}.json`;
+  const registryURL = `https://lina.sameerjs.sh/r/${componentName}.json`;
 
   const commands = useMemo(
     () => convertNpmCommand(command ? command : `npx shadcn@latest add ${registryURL}`),
     [registryURL, command]
   );
-
-  // if (!isLoading) {
-  //   return (
-  //     <div className="mt-4 flex flex-col gap-0">
-  //       <div className="bg-surface flex items-center justify-between rounded-t-xl px-4 py-2">
-  //         <div className="flex gap-2">
-  //           {[1, 2, 3, 4].map((i) => (
-  //             <Skeleton key={i} className="h-7 w-16" />
-  //             // <div key={i} className="bg-muted h-8 w-16 animate-pulse rounded-md" />
-  //           ))}
-  //         </div>
-  //       </div>
-  //       <div className="bg-surface h-16 animate-pulse rounded-b-xl border-t" />
-  //     </div>
-  //   );
-  // }
 
   return (
     <Tabs value={selectedPackageManager} onValueChange={setPackageManager} className={cn("mt-4 flex flex-col gap-0")}>
@@ -78,18 +61,6 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
                 </TabsTrigger>
               )
             )}
-            {/* <TabsTrigger value="pnpm" className="z-10">
-            pnpm
-          </TabsTrigger>
-          <TabsTrigger value="npm" className="z-10">
-            npm
-          </TabsTrigger>
-          <TabsTrigger value="bun" className="z-10">
-            bun
-          </TabsTrigger>
-          <TabsTrigger value="yarn" className="z-10">
-            yarn
-          </TabsTrigger> */}
             <TabsIndicator className="z-5" />
           </TabsList>
         </div>
@@ -113,11 +84,6 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
           </ScrollArea>
         </TabsContent>
       ))}
-      {/* <TabsContent value="pnpm" className="mt-0">
-        <pre className="bg-surface overflow-auto rounded-b-md border p-4 font-mono text-[13px] leading-tight">
-          <code className="">pnpm dlx shadcn@latest add {registryURL}</code>
-        </pre>
-      </TabsContent> */}
     </Tabs>
   );
 }

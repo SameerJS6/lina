@@ -21,11 +21,9 @@ export default function PageWideScrollMask() {
         return;
       }
 
-      // Show top mask if scrolled down from the top
       const topThreshold = 50;
       setShowTopMask(scrollTop > topThreshold);
 
-      // Show bottom mask if not at the bottom
       const bottomThreshold = 50;
       const distanceFromBottom = documentHeight - (scrollTop + windowHeight);
       setShowBottomMask(distanceFromBottom > bottomThreshold);

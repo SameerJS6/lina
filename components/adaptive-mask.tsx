@@ -31,7 +31,6 @@ export default function AdaptiveMask() {
   const leftMaskOpacity = useSpring(leftMaskTarget, springConfigs.masks);
   const rightMaskOpacity = useSpring(rightMaskTarget, springConfigs.masks);
 
-  // Measure container width for responsive animation using ResizeObserver
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -42,10 +41,8 @@ export default function AdaptiveMask() {
       }
     };
 
-    // Initial measurement
     updateContainerWidth();
 
-    // Use ResizeObserver for better performance
     const resizeObserver = new ResizeObserver(updateContainerWidth);
     resizeObserver.observe(containerRef.current);
 

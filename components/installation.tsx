@@ -20,10 +20,7 @@ export default async function Installation({ searchParams }: InstallationProps) 
     getComponentCode(componentName, language),
     getComponentCode("", "tsx", pathToPrimaryHook),
   ]);
-  // const codeData = await getComponentCode(componentName, language);
-  // const hookCodeData = await getComponentCode("", "tsx", "hooks/use-has-primary-touch.tsx");
 
-  // Get variant-specific dependencies
   const mainDependency = variant === "base" ? "@base-ui-components/react" : "@radix-ui/react-scroll-area";
   const devDependency = "tw-animate-css";
 
@@ -31,14 +28,6 @@ export default async function Installation({ searchParams }: InstallationProps) 
     <section className="min-w-0 space-y-6 sm:px-6">
       <div className="space-y-1">
         <AnchorHeading id="installation">Installation</AnchorHeading>
-        {/* <h2 id="installation" className="group relative scroll-m-20 text-3xl font-medium tracking-tight">
-          <a href="#installation" className="inline-block cursor-pointer">
-            <span className="bg-muted pointer-events-none absolute top-1/2 -left-11 -translate-y-1/2 rounded border px-2 font-sans text-xl opacity-0 transition-opacity group-hover:opacity-100">
-              #
-            </span>
-            Installation
-          </a> 
-        </h2> */}
         <p className="text-muted-foreground leading-7">
           Add the adaptive scroll area component to your project with ease.
         </p>

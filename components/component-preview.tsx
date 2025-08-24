@@ -48,20 +48,9 @@ export default async function ComponentPreview({
         <div className="flex items-center justify-between pb-3">
           {!hideCode && (
             <TabsList className="relative z-0 justify-start bg-transparent p-0">
-              <TabsTrigger
-                value="preview"
-                // className="text-muted-foreground data-[selected]:text-foreground hover:text-foreground/75 focus-visible:border-ring focus-visible:ring-ring/50 relative inline-flex h-7 w-fit items-center rounded bg-transparent px-2 pt-2 pb-3 text-sm font-semibold transition-colors transition-none duration-200 ease-out outline-none focus-visible:ring-[3px]"
-              >
-                Preview
-              </TabsTrigger>
-              <TabsTrigger
-                value="code"
-                // className="text-muted-foreground data-[selected]:text-foreground hover:text-foreground/75 focus-visible:border-ring focus-visible:ring-ring/50 relative inline-flex h-7 w-fit items-center rounded bg-transparent px-2 pt-2 pb-3 text-sm font-semibold transition-colors transition-none duration-200 ease-out outline-none focus-visible:ring-[3px]"
-              >
-                Code
-              </TabsTrigger>
+              <TabsTrigger value="preview">Preview</TabsTrigger>
+              <TabsTrigger value="code">Code</TabsTrigger>
               <TabsIndicator />
-              {/* <Tabs.Indicator className="border-border bg-surface absolute top-1/2 left-0 z-[-1] -mt-px h-7 w-(--active-tab-width) translate-x-(--active-tab-left) -translate-y-1/2 rounded border transition-all duration-200 ease-in-out" /> */}
             </TabsList>
           )}
         </div>

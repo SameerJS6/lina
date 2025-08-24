@@ -60,16 +60,6 @@ export default function Why() {
             </p>
           </div>
         </div>
-        {/* <p>
-        The main reason behind it was that Custom Scrollbar/Scrollarea component's looked amazing on desktop but on
-        mobile or on general touch devices, the native scrollbar were just better and I wanted to use that one instead
-        of using a custom scrollbar. So I wrote a simple version back in End of 2024, while working on one of office
-        project. Fast forward to now, while building scrollables examples for Revola, I decided to make that simple
-        version a full-flesh seperate component, So I did the intial version of Lina only had micro-interations & Native
-        scrollable adaption later on, while using v0, I noticed the smooth mask just above the chat input, smoothly
-        fading in content, I really liked that and decided to add it. So, In general the idea is, If we're going Custom
-        ScrollArea route, why not make it look and feel pure custom, refined and detailed, hence I created Lina
-      </p> */}
       </div>
     </section>
   );

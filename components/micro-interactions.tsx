@@ -41,26 +41,6 @@ export default function MicroInteractions() {
     }
   };
 
-  // const getCursorPosition = () => {
-  //   switch (animationPhase) {
-  //     case 0:
-  //       return { x: 140, y: 140 };
-  //     case 1:
-  //       return { x: 13, y: -100 };
-  //     // case 2:
-  //     //   return { x: 13, y: -90 };
-  //     case 2:
-  //       return { x: 13, y: -90, scale: 0.8 };
-  //     case 3:
-  //       return { x: 13, y: 50, scale: 0.8 };
-  //     case 4:
-  //     case 5:
-  //       return { x: 13, y: -100, scale: 0.8 };
-  //     default:
-  //       return { x: 140, y: 140, scale: 1 };
-  //   }
-  // };
-
   const THUMB_SCALE = {
     INITIAL: 1,
     HOVER: 1.1,
@@ -71,23 +51,12 @@ export default function MicroInteractions() {
     switch (animationPhase) {
       case 1:
         return THUMB_SCALE.HOVER;
-      // case 2:
-      //   return 1.1;
       case 2:
         return THUMB_SCALE.PRESS;
-      // 0.95;
-      // case 3:
-      //   return THUMB_SCALE.PRESS;
-      // 0.95;
-      // case 4:
-      //   return THUMB_SCALE.PRESS;
-      // 0.95;
       case 5:
         return THUMB_SCALE.INITIAL;
-      // 1;
       default:
         return THUMB_SCALE.INITIAL;
-      //  1;
     }
   };
 
@@ -127,8 +96,6 @@ export default function MicroInteractions() {
 
   return (
     <Card className="group relative overflow-hidden border border-zinc-200/50 bg-white/50 backdrop-blur-sm transition-all duration-300 hover:bg-white/80 dark:border-zinc-800/50 dark:bg-zinc-900/50">
-      {/* <div className="group relative overflow-hidden rounded-2xl border border-zinc-200/50 bg-white/50 p-8 backdrop-blur-sm transition-all duration-500 hover:border-zinc-200/60 hover:shadow-xl hover:shadow-zinc-900/5 dark:border-zinc-700/40 dark:bg-zinc-900/50 hover:dark:border-zinc-800/50 dark:hover:shadow-zinc-950/20">
-      Animation Container */}
       <CardHeader className="relative">
         <CardTitle className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Micro Interactions</CardTitle>
         <CardDescription className="text-zinc-600 dark:text-zinc-400">
@@ -154,9 +121,6 @@ export default function MicroInteractions() {
             }}
             initial={false}
             transition={{ duration: 1.5, type: "spring", bounce: 0.25 }}
-            // drag="y"
-            // dragConstraints={{ top: 0, bottom: 100 }}
-            // dragElastic={0.2}
             style={{ marginTop: "-130px" }}
           />
 
@@ -193,9 +157,6 @@ export default function MicroInteractions() {
           desktop experience.
         </p>
       </CardContent>
-
-      {/* Background decoration */}
-      {/* <div className="pointer-events-none absolute right-8 bottom-8 left-8 h-12 bg-gradient-to-t from-zinc-50 via-zinc-50/60 dark:from-zinc-900/50 dark:via-zinc-900/30" /> */}
     </Card>
   );
 }
