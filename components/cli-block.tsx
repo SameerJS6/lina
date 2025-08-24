@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { Suspense, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { ScrollArea, ScrollBar } from "@/registry/radix-ui/scroll-area";
 import { type RegistryKeys } from "@/registry/registry";
@@ -20,6 +20,14 @@ type CLIBlockProps = {
 };
 
 export default function CLIBlock({ name, command }: CLIBlockProps) {
+  return (
+    <Suspense>
+      <CLIBlockContent name={name} command={command} />
+    </Suspense>
+  );
+}
+
+function CLIBlockContent({ name, command }: CLIBlockProps) {
   const searchParams = useSearchParams();
   const variant = searchParams?.get("variant") === "base" ? "base" : "radix";
   const { selectedPackageManager, setPackageManager, isLoading, setLoading } = usePackageManagerStore();
