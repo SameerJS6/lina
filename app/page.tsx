@@ -21,7 +21,7 @@ export default async function Home({ searchParams }: HomeProps) {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className="inline items-center gap-1"
+            className="focus-ring inline items-center gap-1 rounded"
             href="https://ui.shadcn.com/docs/components/scroll-area"
           >
             Shadcn UI
