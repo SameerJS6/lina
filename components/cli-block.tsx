@@ -37,7 +37,7 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
   }, [setLoading]);
 
   const componentName = `${name}-${variant}`;
-  const registryURL = `https://lina.sameerjs.sh/r/${componentName}.json`;
+  const registryURL = `https://lina.sameer.sh/r/${componentName}.json`;
 
   const commands = useMemo(
     () => convertNpmCommand(command ? command : `npx shadcn@latest add ${registryURL}`),

@@ -41,7 +41,7 @@
       "type": "registry:component",
       "title": "Vertical Scroll Area Radix Demo",
       "description": "A demo showcasing the vertical scroll area component using Lina's Radix UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-radix.json"],
+      "registryDependencies": ["https://lina.sameerjs.sh/r/scroll-area-radix.json"],
       "files": [{ "path": "registry/radix-ui/examples/vertical-scroll.tsx", "type": "registry:component" }]
     },
     {
@@ -49,7 +49,7 @@
       "type": "registry:component",
       "title": "Vertical Scroll Area Base Demo",
       "description": "A demo showcasing the vertical scroll area component using Lina's Base UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-base.json"],
+      "registryDependencies": ["https://lina.sameerjs.sh/r/scroll-area-base.json"],
       "files": [{ "path": "registry/base-ui/examples/vertical-scroll.tsx", "type": "registry:component" }]
     },
     {
@@ -57,7 +57,7 @@
       "type": "registry:component",
       "title": "Horizontal Scroll Area Radix Demo",
       "description": "A demo showcasing the horizontal scroll area component using Lina's Radix UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-radix.json"],
+      "registryDependencies": ["https://lina.sameerjs.sh/r/scroll-area-radix.json"],
       "files": [{ "path": "registry/radix-ui/examples/horizontal-scroll.tsx", "type": "registry:component" }]
     },
     {
@@ -65,7 +65,7 @@
       "type": "registry:component",
       "title": "Horizontal Scroll Area Base Demo",
       "description": "A demo showcasing the horizontal scroll area component using Lina's Base UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-base.json"],
+      "registryDependencies": ["https://lina.sameerjs.sh/r/scroll-area-base.json"],
       "files": [{ "path": "registry/base-ui/examples/horizontal-scroll.tsx", "type": "registry:component" }]
     },
     {
