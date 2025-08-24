@@ -36,7 +36,7 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
     setLoading(false);
   }, [setLoading]);
 
-  const componentName = `${name}-${variant}`;
+  const componentName = `${name}-demo-${variant}`;
   const registryURL = `https://lina.sameer.sh/r/${componentName}.json`;
 
   const commands = useMemo(
