@@ -1,16 +1,28 @@
 import Link from "next/link";
 
 import ThemeToggle from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 export default function Navbar() {
   return (
     <header className="container">
       <nav className="flex items-center justify-between gap-4 py-4">
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/">Lina</Link>
-        </Button>
+        <Link href="/" className={buttonVariants({ variant: "ghost", size: "sm", className: "h-10" })}>
+          <svg
+            width="270"
+            height="270"
+            viewBox="0 0 270 270"
+            fill="none"
+            className="size-8"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="270" height="270" />
+            <rect x="109" y="35" width="20" height="200" rx="10" fill="currentColor" />
+            <rect x="149" y="85" width="13" height="100" rx="6.5" fill="currentColor" />
+          </svg>
+          <span className="sr-only">Home</span>
+        </Link>
         <div className="flex h-5 items-center">
           <Button variant="ghost" size="icon" asChild>
             <Link target="_blank" href="https://github.com/SameerJS6/lina" rel="noopener noreferrer">
