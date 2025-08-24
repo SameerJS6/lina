@@ -29,9 +29,7 @@ export default function Examples({ searchParams }: ExamplesProps) {
             </div>
             <CLIBlock name="vertical-scroll" />
           </div>
-          {/* <Suspense> */}
           <ComponentPreview name="vertical-scroll" className="my-0" searchParams={searchParams} />
-          {/* </Suspense> */}
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="flex min-w-0 flex-col justify-between">
@@ -44,9 +42,7 @@ export default function Examples({ searchParams }: ExamplesProps) {
             </div>
             <CLIBlock name="horizontal-scroll" />
           </div>
-          {/* <Suspense> */}
           <ComponentPreview name="horizontal-scroll" className="my-0" searchParams={searchParams} />
-          {/* </Suspense> */}
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="flex min-w-0 flex-col justify-between">
@@ -59,9 +55,7 @@ export default function Examples({ searchParams }: ExamplesProps) {
             </div>
             <CLIBlock name="timezone-select" />
           </div>
-          {/* <Suspense> */}
           <ComponentPreview name="timezone-select" searchParams={searchParams} />
-          {/* </Suspense> */}
         </div>
       </div>
     </section>
