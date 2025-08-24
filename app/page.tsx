@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 
 import Examples from "@/components/examples";
@@ -57,15 +58,17 @@ export default async function Home({ searchParams }: HomeProps) {
           </Link>
         </div>
       </section>
-      <section className="space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16 xl:space-y-24">
-        <Features />
-        <section className="grid w-full min-w-0 gap-4 lg:grid-cols-2">
-          <Installation searchParams={searchParams} />
-          <Usage searchParams={searchParams} />
+      <Suspense>
+        <section className="space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16 xl:space-y-24">
+          <Features />
+          <section className="grid w-full min-w-0 gap-4 lg:grid-cols-2">
+            <Installation searchParams={searchParams} />
+            <Usage searchParams={searchParams} />
+          </section>
+          <Why />
+          <Examples searchParams={searchParams} />
         </section>
-        <Why />
-        <Examples searchParams={searchParams} />
-      </section>
+      </Suspense>
       <PageWideScrollMask />
     </main>
   );
