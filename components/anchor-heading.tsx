@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
 
-interface AnchorHeadingProps extends ComponentProps<"h2"> {}
+type AnchorHeadingProps = ComponentProps<"h2">;
 
 export default function AnchorHeading({ className, id, children, ...props }: AnchorHeadingProps) {
   return (
