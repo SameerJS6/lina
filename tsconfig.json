@@ -9,6 +9,7 @@
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "baseUrl": ".",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
