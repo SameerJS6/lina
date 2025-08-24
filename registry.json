@@ -4,7 +4,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "items": [
     {
-      "name": "scroll-area-radix",
+      "name": "lina-radix",
       "type": "registry:ui",
       "title": "Radix Adaptive Scroll Area",
       "description": "A responsive scroll area that feels native on touch devices, offering custom styling and enhanced interactions where it matters most.",
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "name": "scroll-area-base",
+      "name": "lina-base",
       "type": "registry:ui",
       "title": "Base UI Adaptive Scroll Area",
       "description": "A responsive scroll area that feel native on touch devices, offereing custom styling and enchanced interactions where it matter most.",
