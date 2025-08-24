@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timezone-select-demo-base",
+  "type": "registry:component",
+  "title": "Timezone Select Base UI Demo",
+  "description": "A demo showcasing the timezone select component using Lina based on Base UI",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "label",
+    "popover",
+    "https://lina.sameerjs.sh/r/scroll-area-base.json",
+    "https://lina.sameerjs.sh/r/command-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/timezone-select.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useId, useMemo, useState } from \"react\";\r\nimport {\r\n  Command,\r\n  CommandEmpty,\r\n  CommandGroup,\r\n  CommandInput,\r\n  CommandItem,\r\n  CommandList,\r\n} from \"@/registry/base-ui/examples/command\";\r\n\r\nimport { CheckIcon, ChevronDownIcon } from \"lucide-react\";\r\n\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { Label } from \"@/components/ui/label\";\r\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/components/ui/popover\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport function TimezonSelectExample() {\r\n  const id = useId();\r\n  const [open, setOpen] = useState<boolean>(false);\r\n  const [value, setValue] = useState<string>(\"Asia/Calcutta\");\r\n\r\n  const timezones = Intl.supportedValuesOf(\"timeZone\");\r\n\r\n  const formattedTimezones = useMemo(() => {\r\n    return timezones\r\n      .map((timezone) => {\r\n        const formatter = new Intl.DateTimeFormat(\"en\", {\r\n          timeZone: timezone,\r\n          timeZoneName: \"shortOffset\",\r\n        });\r\n        const parts = formatter.formatToParts(new Date());\r\n        const offset = parts.find((part) => part.type === \"timeZoneName\")?.value || \"\";\r\n        const modifiedOffset = offset === \"GMT\" ? \"GMT+0\" : offset;\r\n\r\n        return {\r\n          value: timezone,\r\n          label: `(${modifiedOffset}) ${timezone.replace(/_/g, \" \")}`,\r\n          numericOffset: parseInt(offset.replace(\"GMT\", \"\").replace(\"+\", \"\") || \"0\"),\r\n        };\r\n      })\r\n      .sort((a, b) => a.numericOffset - b.numericOffset);\r\n  }, [timezones]);\r\n\r\n  return (\r\n    <div className=\"*:not-first:mt-2\">\r\n      <Label htmlFor={id}>Timezone select with search</Label>\r\n      <Popover open={open} onOpenChange={setOpen}>\r\n        <PopoverTrigger asChild>\r\n          <Button\r\n            id={id}\r\n            variant=\"outline\"\r\n            role=\"combobox\"\r\n            aria-expanded={open}\r\n            className=\"bg-background hover:bg-background border-input w-full justify-between px-3 font-normal outline-offset-0 outline-none focus-visible:outline-[3px]\"\r\n          >\r\n            <span className={cn(\"truncate\", !value && \"text-muted-foreground\")}>\r\n              {value ? formattedTimezones.find((timezone) => timezone.value === value)?.label : \"Select timezone\"}\r\n            </span>\r\n            <ChevronDownIcon size={16} className=\"text-muted-foreground/80 shrink-0\" aria-hidden=\"true\" />\r\n          </Button>\r\n        </PopoverTrigger>\r\n        <PopoverContent className=\"border-input w-full min-w-[var(--radix-popper-anchor-width)] p-0\" align=\"start\">\r\n          <Command\r\n            filter={(value, search) => {\r\n              const normalizedValue = value.toLowerCase();\r\n              const normalizedSearch = search.toLowerCase().replace(/\\s+/g, \"\");\r\n              return normalizedValue.includes(normalizedSearch) ? 1 : 0;\r\n            }}\r\n          >\r\n            <CommandInput placeholder=\"Search timezone...\" />\r\n            <CommandList>\r\n              <CommandEmpty>No timezone found.</CommandEmpty>\r\n              <CommandGroup>\r\n                {formattedTimezones.map(({ value: itemValue, label }) => (\r\n                  <CommandItem\r\n                    key={itemValue}\r\n                    value={itemValue}\r\n                    onSelect={(currentValue) => {\r\n                      setValue(currentValue === value ? \"\" : currentValue);\r\n                      setOpen(false);\r\n                    }}\r\n                  >\r\n                    {label}\r\n                    {value === itemValue && <CheckIcon size={16} className=\"ml-auto\" />}\r\n                  </CommandItem>\r\n                ))}\r\n              </CommandGroup>\r\n            </CommandList>\r\n          </Command>\r\n        </PopoverContent>\r\n      </Popover>\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -19,6 +19,8 @@ export function useTouchPrimary() {
     mq.addEventListener("change", handleTouch, { signal });
     window.addEventListener("pointerdown", handleTouch, { signal });
 
+    handleTouch();
+
     return () => controller.abort();
   }, []);
 

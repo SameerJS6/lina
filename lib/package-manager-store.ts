@@ -1,0 +1,29 @@
+"use client";
+
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+type PackageManager = "pnpm" | "npm" | "bun" | "yarn";
+
+type PackageManagerState = {
+  selectedPackageManager: PackageManager;
+  isLoading: boolean;
+  setPackageManager: (pm: PackageManager) => void;
+  setLoading: (loading: boolean) => void;
+};
+
+const usePackageManagerStore = create<PackageManagerState>()(
+  persist(
+    (set) => ({
+      selectedPackageManager: "pnpm",
+      isLoading: true,
+      setPackageManager: (pm) => set({ selectedPackageManager: pm }),
+      setLoading: (loading) => set({ isLoading: loading }),
+    }),
+    {
+      name: "package-manager-store",
+    }
+  )
+);
+
+export { usePackageManagerStore, type PackageManager };
