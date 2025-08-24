@@ -1,6 +1,6 @@
 {
   "name": "lina",
-  "homepage": "https://lina.sameerjs.sh",
+  "homepage": "https://lina.sameer.sh",
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "items": [
     {
@@ -41,7 +41,7 @@
       "type": "registry:component",
       "title": "Vertical Scroll Area Radix Demo",
       "description": "A demo showcasing the vertical scroll area component using Lina's Radix UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-radix.json"],
+      "registryDependencies": ["https://lina.sameer.sh/r/scroll-area-radix.json"],
       "files": [{ "path": "registry/radix-ui/examples/vertical-scroll.tsx", "type": "registry:component" }]
     },
     {
@@ -49,7 +49,7 @@
       "type": "registry:component",
       "title": "Vertical Scroll Area Base Demo",
       "description": "A demo showcasing the vertical scroll area component using Lina's Base UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-base.json"],
+      "registryDependencies": ["https://lina.sameer.sh/r/scroll-area-base.json"],
       "files": [{ "path": "registry/base-ui/examples/vertical-scroll.tsx", "type": "registry:component" }]
     },
     {
@@ -57,7 +57,7 @@
       "type": "registry:component",
       "title": "Horizontal Scroll Area Radix Demo",
       "description": "A demo showcasing the horizontal scroll area component using Lina's Radix UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-radix.json"],
+      "registryDependencies": ["https://lina.sameer.sh/r/scroll-area-radix.json"],
       "files": [{ "path": "registry/radix-ui/examples/horizontal-scroll.tsx", "type": "registry:component" }]
     },
     {
@@ -65,7 +65,7 @@
       "type": "registry:component",
       "title": "Horizontal Scroll Area Base Demo",
       "description": "A demo showcasing the horizontal scroll area component using Lina's Base UI",
-      "registryDependencies": ["https://lina.sameerjs.com/r/scroll-area-base.json"],
+      "registryDependencies": ["https://lina.sameer.sh/r/scroll-area-base.json"],
       "files": [{ "path": "registry/base-ui/examples/horizontal-scroll.tsx", "type": "registry:component" }]
     },
     {
@@ -77,8 +77,8 @@
         "button",
         "label",
         "popover",
-        "https://lina.sameerjs.sh/r/scroll-area-radix.json",
-        "https://lina.sameerjs.sh/r/command-radix.json"
+        "https://lina.sameer.sh/r/scroll-area-radix.json",
+        "https://lina.sameer.sh/r/command-radix.json"
       ],
       "dependencies": ["lucide-react"],
       "files": [{ "path": "registry/radix-ui/examples/timezone-select.tsx", "type": "registry:component" }]
@@ -92,8 +92,8 @@
         "button",
         "label",
         "popover",
-        "https://lina.sameerjs.sh/r/scroll-area-base.json",
-        "https://lina.sameerjs.sh/r/command-base.json"
+        "https://lina.sameer.sh/r/scroll-area-base.json",
+        "https://lina.sameer.sh/r/command-base.json"
       ],
       "dependencies": ["lucide-react"],
       "files": [{ "path": "registry/base-ui/examples/timezone-select.tsx", "type": "registry:component" }]
@@ -103,7 +103,7 @@
       "type": "registry:ui",
       "title": "Command based on Lina's Radix UI variant",
       "description": "A command component built using Lina's Radix UI",
-      "registryDependencies": ["button", "dialog", "https://lina.sameerjs.sh/r/scroll-area-radix.json"],
+      "registryDependencies": ["button", "dialog", "https://lina.sameer.sh/r/scroll-area-radix.json"],
       "dependencies": ["lucide-react", "cmdk"],
       "files": [{ "path": "registry/radix-ui/examples/command.tsx", "type": "registry:ui" }]
     },
@@ -112,7 +112,7 @@
       "type": "registry:ui",
       "title": "Command based on Lina's Base UI variant",
       "description": "A command component built using Lina's Base UI",
-      "registryDependencies": ["button", "dialog", "https://lina.sameerjs.sh/r/scroll-area-base.json"],
+      "registryDependencies": ["button", "dialog", "https://lina.sameer.sh/r/scroll-area-base.json"],
       "dependencies": ["lucide-react", "cmdk"],
       "files": [{ "path": "registry/base-ui/examples/command.tsx", "type": "registry:ui" }]
     }

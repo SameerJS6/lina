@@ -5,7 +5,7 @@
   "title": "Vertical Scroll Area Radix Demo",
   "description": "A demo showcasing the vertical scroll area component using Lina's Radix UI",
   "registryDependencies": [
-    "https://lina.sameerjs.com/r/scroll-area-radix.json"
+    "https://lina.sameer.sh/r/scroll-area-radix.json"
   ],
   "files": [
     {
