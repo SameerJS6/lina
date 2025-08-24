@@ -1,6 +1,7 @@
-import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AnchorHeading from "@/components/anchor-heading";
 import CLIBlock from "@/components/cli-block";
 import CodeBlock from "@/components/code-block";
+import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getComponentCode } from "@/lib/code-highlight";
 
 type InstallationProps = {
@@ -27,9 +28,17 @@ export default async function Installation({ searchParams }: InstallationProps) 
   const devDependency = "tw-animate-css";
 
   return (
-    <section className="min-w-0 space-y-6 p-6">
+    <section className="min-w-0 space-y-6 sm:px-6">
       <div className="space-y-1">
-        <h2 className="scroll-m-20 text-3xl font-medium tracking-tight">Installation</h2>
+        <AnchorHeading id="installation">Installation</AnchorHeading>
+        {/* <h2 id="installation" className="group relative scroll-m-20 text-3xl font-medium tracking-tight">
+          <a href="#installation" className="inline-block cursor-pointer">
+            <span className="bg-muted pointer-events-none absolute top-1/2 -left-11 -translate-y-1/2 rounded border px-2 font-sans text-xl opacity-0 transition-opacity group-hover:opacity-100">
+              #
+            </span>
+            Installation
+          </a> 
+        </h2> */}
         <p className="text-muted-foreground leading-7">
           Add the adaptive scroll area component to your project with ease.
         </p>

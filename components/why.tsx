@@ -1,9 +1,13 @@
+import AnchorHeading from "@/components/anchor-heading";
+
 export default function Why() {
   return (
-    <section className="p-6 lg:max-w-[750px]">
+    <section className="sm:px-6 lg:max-w-[750px]">
       <div className="space-y-6">
         <div className="space-y-1">
-          <h2 className="scroll-m-20 text-3xl font-medium tracking-tight">Why</h2>
+          <AnchorHeading id="why" className="scroll-m-12">
+            Why
+          </AnchorHeading>
           <p className="text-muted-foreground leading-7">Why did I create Lina in the first place?</p>
         </div>
         <div className="space-y-8">

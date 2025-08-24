@@ -1,3 +1,4 @@
+import AnchorHeading from "@/components/anchor-heading";
 import CLIBlock from "@/components/cli-block";
 import ComponentPreview from "@/components/component-preview";
 
@@ -7,9 +8,11 @@ type ExamplesProps = {
 
 export default function Examples({ searchParams }: ExamplesProps) {
   return (
-    <section className="space-y-6 p-6 sm:space-y-8 lg:space-y-10">
+    <section className="space-y-6 sm:space-y-8 sm:px-6 lg:space-y-10">
       <div className="space-y-1">
-        <h2 className="scroll-m-20 text-3xl font-medium tracking-tight">Examples</h2>
+        <AnchorHeading id="examples" className="scroll-m-16">
+          Examples
+        </AnchorHeading>
         <p className="text-muted-foreground leading-7">
           Explore various examples showcasing the capabilities of the Adaptive Scroll Area component.
         </p>

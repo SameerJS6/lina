@@ -1,3 +1,4 @@
+import AnchorHeading from "@/components/anchor-heading";
 import CodeBlock from "@/components/code-block";
 import { getComponentCode } from "@/lib/code-highlight";
 
@@ -15,9 +16,9 @@ export default async function Usage({ searchParams }: UsageProps) {
   const codeData = await getComponentCode("", language, pathToDemoUsage);
 
   return (
-    <section className="min-w-0 space-y-6 p-6">
+    <section className="min-w-0 space-y-6 sm:px-6">
       <div className="space-y-1">
-        <h2 className="scroll-m-20 text-3xl font-medium tracking-tight">Usage</h2>
+        <AnchorHeading id="usage">Usage</AnchorHeading>
         <p className="text-muted-foreground leading-7">
           Add the adaptive scroll area component to your project with ease.
         </p>
