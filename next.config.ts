@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   // so they are available on Vercel's serverless filesystem.
   outputFileTracingIncludes: {
     "/(app|pages|api)/**": ["./registry/**"],
+    "/(hooks|components|lib)/**": ["./hooks/**", "./components/**", "./lib/**"],
   },
 };
 
