@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vertical-scroll-demo-radix",
+  "type": "registry:component",
+  "title": "Vertical Scroll Area Radix Demo",
+  "description": "A demo showcasing the vertical scroll area component using Lina's Radix UI",
+  "registryDependencies": [
+    "https://lina.sameerjs.com/r/scroll-area-radix.json"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-ui/examples/vertical-scroll.tsx",
+      "content": "import * as React from \"react\";\r\nimport { ScrollArea } from \"@/registry/radix-ui/scroll-area\";\r\n\r\nimport { Separator } from \"@/components/ui/separator\";\r\n\r\nconst tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);\r\n\r\nexport function ScrollAreaDemo() {\r\n  return (\r\n    <ScrollArea className=\"bg-background h-72 w-48 rounded-md border\">\r\n      <div className=\"p-4\">\r\n        <h4 className=\"mb-4 text-sm leading-none font-medium\">Tags</h4>\r\n        {tags.map((tag) => (\r\n          <React.Fragment key={tag}>\r\n            <div className=\"text-sm\">{tag}</div>\r\n            <Separator className=\"my-2\" />\r\n          </React.Fragment>\r\n        ))}\r\n      </div>\r\n    </ScrollArea>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

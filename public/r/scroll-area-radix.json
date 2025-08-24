@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-radix",
+  "type": "registry:ui",
+  "title": "Radix Adaptive Scroll Area",
+  "description": "A responsive scroll area that feels native on touch devices, offering custom styling and enhanced interactions where it matters most.",
+  "dependencies": [
+    "@radix-ui/react-scroll-area"
+  ],
+  "devDependencies": [
+    "tw-animate-css"
+  ],
+  "files": [
+    {
+      "path": "registry/radix-ui/scroll-area.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport * as ScrollAreaPrimitive from \"@radix-ui/react-scroll-area\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nimport { useTouchPrimary } from \"@/hooks/use-has-primary-touch\";\r\n\r\nconst ScrollAreaContext = React.createContext<boolean>(false);\r\n\r\nconst ScrollArea = React.forwardRef<\r\n  React.ComponentRef<typeof ScrollAreaPrimitive.Root>,\r\n  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {\r\n    viewportClassName?: string;\r\n  }\r\n>(({ className, children, scrollHideDelay = 0, viewportClassName, ...props }, ref) => {\r\n  const isTouch = useTouchPrimary();\r\n\r\n  return (\r\n    <ScrollAreaContext.Provider value={isTouch}>\r\n      {isTouch ? (\r\n        <div\r\n          ref={ref}\r\n          role=\"group\"\r\n          data-slot=\"scroll-area\"\r\n          aria-roledescription=\"scroll area\"\r\n          className={cn(\"relative overflow-hidden\", className)}\r\n          {...props}\r\n        >\r\n          <div className={cn(\"size-full overflow-auto\", viewportClassName)} tabIndex={0}>\r\n            {children}\r\n          </div>\r\n        </div>\r\n      ) : (\r\n        <ScrollAreaPrimitive.Root\r\n          ref={ref}\r\n          data-slot=\"scroll-area\"\r\n          scrollHideDelay={scrollHideDelay}\r\n          className={cn(\"relative overflow-hidden\", className)}\r\n          {...props}\r\n        >\r\n          <ScrollAreaPrimitive.Viewport data-slot=\"scroll-area-viewport\" className=\"size-full rounded-[inherit]\">\r\n            {children}\r\n          </ScrollAreaPrimitive.Viewport>\r\n          <ScrollBar />\r\n          <ScrollAreaPrimitive.Corner />\r\n        </ScrollAreaPrimitive.Root>\r\n      )}\r\n    </ScrollAreaContext.Provider>\r\n  );\r\n});\r\n\r\nScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;\r\n\r\nconst ScrollBar = React.forwardRef<\r\n  React.ComponentRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,\r\n  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>\r\n>(({ className, orientation = \"vertical\", ...props }, ref) => {\r\n  const isTouch = React.useContext(ScrollAreaContext);\r\n\r\n  if (isTouch) return null;\r\n\r\n  return (\r\n    <ScrollAreaPrimitive.ScrollAreaScrollbar\r\n      ref={ref}\r\n      orientation={orientation}\r\n      data-slot=\"scroll-area-scrollbar\"\r\n      className={cn(\r\n        \"hover:bg-muted dark:hover:bg-muted/50 data-[state=visible]:fade-in-0 data-[state=hidden]:fade-out-0 data-[state=visible]:animate-in data-[state=hidden]:animate-out flex touch-none p-px transition-[colors] duration-150 select-none\",\r\n        orientation === \"vertical\" && \"h-full w-2.5 border-l border-l-transparent\",\r\n        orientation === \"horizontal\" && \"h-2.5 flex-col border-t border-t-transparent px-1 pr-1.25\",\r\n        className\r\n      )}\r\n      {...props}\r\n    >\r\n      <ScrollAreaPrimitive.ScrollAreaThumb\r\n        data-slot=\"scroll-area-thumb\"\r\n        className={cn(\r\n          \"bg-border relative flex-1 rounded-full transition-[scale]\",\r\n          orientation === \"vertical\" && \"my-1 hover:scale-y-110 active:scale-y-95\",\r\n          orientation === \"horizontal\" && \"hover:scale-x-102 active:scale-x-98\"\r\n        )}\r\n      />\r\n    </ScrollAreaPrimitive.ScrollAreaScrollbar>\r\n  );\r\n});\r\n\r\nScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;\r\n\r\nexport { ScrollArea, ScrollBar };\r\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "hooks/use-has-primary-touch.tsx",
+      "content": "import { useEffect, useState } from \"react\";\n\nexport function useTouchPrimary() {\n  const [isTouchPrimary, setIsTouchPrimary] = useState(false);\n\n  useEffect(() => {\n    if (typeof window === \"undefined\") return;\n\n    const controller = new AbortController();\n    const { signal } = controller;\n\n    const handleTouch = () => {\n      const hasTouch = \"ontouchstart\" in window || navigator.maxTouchPoints > 0;\n      const prefersTouch = window.matchMedia(\"(pointer: coarse)\").matches;\n      setIsTouchPrimary(hasTouch && prefersTouch);\n    };\n\n    const mq = window.matchMedia(\"(pointer: coarse)\");\n    mq.addEventListener(\"change\", handleTouch, { signal });\n    window.addEventListener(\"pointerdown\", handleTouch, { signal });\n\n    handleTouch();\n\n    return () => controller.abort();\n  }, []);\n\n  return isTouchPrimary;\n}\n",
+      "type": "registry:hook"
+    }
+  ]
+}

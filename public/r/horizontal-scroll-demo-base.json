@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "horizontal-scroll-demo-base",
+  "type": "registry:component",
+  "title": "Horizontal Scroll Area Base Demo",
+  "description": "A demo showcasing the horizontal scroll area component using Lina's Base UI",
+  "registryDependencies": [
+    "https://lina.sameerjs.com/r/scroll-area-base.json"
+  ],
+  "files": [
+    {
+      "path": "registry/base-ui/examples/horizontal-scroll.tsx",
+      "content": "import Image from \"next/image\";\r\nimport { ScrollArea, ScrollBar } from \"@/registry/base-ui/scroll-area\";\r\n\r\nexport interface Artwork {\r\n  artist: string;\r\n  art: string;\r\n}\r\n\r\nconst works: Artwork[] = [\r\n  {\r\n    artist: \"Ornella Binni\",\r\n    art: \"https://images.unsplash.com/photo-1465869185982-5a1a7522cbcb?auto=format&fit=crop&w=300&q=80\",\r\n  },\r\n  {\r\n    artist: \"Tom Byrom\",\r\n    art: \"https://images.unsplash.com/photo-1548516173-3cabfa4607e9?auto=format&fit=crop&w=300&q=80\",\r\n  },\r\n  {\r\n    artist: \"Vladimir Malyavko\",\r\n    art: \"https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80\",\r\n  },\r\n];\r\n\r\nexport function ScrollAreaHorizontalDemo() {\r\n  return (\r\n    <ScrollArea className=\"bg-background w-96 rounded-md border whitespace-nowrap\">\r\n      <div className=\"flex w-max space-x-4 p-4\">\r\n        {works.map((artwork) => (\r\n          <figure key={artwork.artist} className=\"shrink-0\">\r\n            <div className=\"overflow-hidden rounded-md\">\r\n              <Image\r\n                src={artwork.art}\r\n                alt={`Photo by ${artwork.artist}`}\r\n                className=\"aspect-[3/4] h-fit w-fit object-cover\"\r\n                width={300}\r\n                height={400}\r\n              />\r\n            </div>\r\n            <figcaption className=\"text-muted-foreground pt-2 text-xs\">\r\n              Photo by <span className=\"text-foreground font-semibold\">{artwork.artist}</span>\r\n            </figcaption>\r\n          </figure>\r\n        ))}\r\n      </div>\r\n      <ScrollBar orientation=\"horizontal\" />\r\n    </ScrollArea>\r\n  );\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ]
+}
