@@ -10,7 +10,7 @@ export function getVariantFromSearchParams(searchParams: ReadonlyURLSearchParams
 export function createVariantUrl(variant: ComponentLibrary, currentUrl?: string): string {
   if (typeof window === "undefined") return "#";
 
-  const url = new URL(currentUrl || window.location.href);
-  url.searchParams.set("variant", variant);
-  return url.toString();
+  const params = new URLSearchParams(currentUrl || window.location.href);
+  params.set("variant", variant);
+  return `${window.location.pathname}?${params.toString()}`;
 }
