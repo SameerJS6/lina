@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "scroll-area-base",
+  "name": "lina-base",
   "type": "registry:ui",
   "title": "Base UI Adaptive Scroll Area",
   "description": "A responsive scroll area that feel native on touch devices, offereing custom styling and enchanced interactions where it matter most.",
