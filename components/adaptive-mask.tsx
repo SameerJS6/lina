@@ -136,8 +136,6 @@ export default function AdaptiveMask() {
         </div>
 
         <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-          {/* Built-in adaptive masking that automatically adjusts to scrollable direction and position, creating seamless
-          edge gradients that appear and disappear based on scroll state. */}
           Automatic edge masks that appear and fade based on scroll position and direction, creating seamless visual
           boundaries.
         </p>

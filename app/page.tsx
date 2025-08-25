@@ -13,7 +13,7 @@ type HomeProps = {
 };
 
 export const dynamicParams = false;
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export default async function Home({ searchParams }: HomeProps) {
   return (
@@ -29,25 +29,12 @@ export default async function Home({ searchParams }: HomeProps) {
             Shadcn UI
           </a>{" "}
           Drop-in Replacement
-          {/* Drop-in replacement for{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline items-center gap-1 underline"
-            href="https://ui.shadcn.com/docs/components/scroll-area"
-          >
-            shadcn/ui{" "}
-          </a>
-          Scroll Area */}
         </div>
         <h1 className="font-inter leading-tighter text-primary w-full text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:text-5xl xl:tracking-tighter">
-          {/* Adaptive Scroll Area */}
-          {/* Dynamic Scroll: Native Touch, Custom Control */}
           The Adaptive Scroll Solution for Modern UIs
         </h1>
 
         <p className="text-foreground max-w-4xl text-base text-balance sm:text-lg">
-          {/* A responsive scroll area that feels native on touch devices and provides custom styling where it matters most. */}
           A responsive scroll area that feels native on touch devices, offering custom styling and enhanced interactions
           where it matters most.
         </p>
