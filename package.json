@@ -1,6 +1,7 @@
 {
   "name": "lina",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Lina is a drop‑in replacement for shadcn/ui's `ScrollArea` with better defaults and a more native feel.",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
