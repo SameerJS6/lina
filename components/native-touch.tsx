@@ -134,7 +134,6 @@ export default function NativeTouch() {
         </div>
 
         <p className="text-sm leading-relaxed text-zinc-700 md:max-w-[45ch] dark:text-zinc-300">
-          {/* Automatically morphs between scrollbar styles for optimal user experience across all devices. */}
           Automatic scrollbar adaptation between native and custom styles based on device type and touch capabilities.
         </p>
       </CardContent>

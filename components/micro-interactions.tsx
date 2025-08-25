@@ -152,7 +152,6 @@ export default function MicroInteractions() {
         </div>
 
         <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-          {/* Automatically morphs between scrollbar styles for optimal user experience across all devices. */}
           Refined micro-interactions including scrollbar fade effects, hover states, and thumb interactions for polished
           desktop experience.
         </p>

@@ -93,7 +93,7 @@ export default function AdaptiveMask() {
       <CardHeader className="relative">
         <CardTitle className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Adaptive Mask</CardTitle>
         <CardDescription className="text-zinc-600 dark:text-zinc-400">
-          Dyanmic masking that responds to content.
+          Dynamic masking that responds to content.
         </CardDescription>
       </CardHeader>
       <CardContent className="relative space-y-4">
@@ -136,8 +136,6 @@ export default function AdaptiveMask() {
         </div>
 
         <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-          {/* Built-in adaptive masking that automatically adjusts to scrollable direction and position, creating seamless
-          edge gradients that appear and disappear based on scroll state. */}
           Automatic edge masks that appear and fade based on scroll position and direction, creating seamless visual
           boundaries.
         </p>

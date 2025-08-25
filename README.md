@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lina
 
-## Getting Started
+The Adaptive Scroll Area for Modern UIs
 
-First, run the development server:
+A responsive scroll area that feels native on touch devices, offering custom styling and enhanced interactions where it matters most.
+
+Lina is a drop‑in replacement for shadcn/ui's `ScrollArea` with better defaults and a more native feel.
+
+![](/main-mockup.png)
+
+## Features
+
+- **Adaptive mask** - Subtle edge fades appear only when content is scrollable and adapt in real time to scroll position, axis, and container shape.
+- **Micro‑interactions** - Hover/press effects for the custom scrollbar on non‑touch (desktop) devices, with responsive thumb behavior.
+- **Native touch optimization** - Uses the right touch‑action, momentum scrolling, and passive listeners so scrolling feels truly native on iOS/Android while staying precise on desktop.
+- **Drop‑in replacement** - Matches shadcn/ui's `ScrollArea` API, same props, slots, and `className` ergonomics—so you can swap it in with zero extra step.
+- **Radix and Base UI variants** - Choose Radix or Base UI primitives while keeping a consistent API and visual design.
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx shadcn@latest add https://lina.sameer.sh/r/lina-radix.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```tsx
+import { ScrollArea } from "@/components/ui/scroll-area";
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+export default function Example() {
+  return (
+    <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
+      Jokester began sneaking into the castle in the middle of the night and leaving jokes all over the place: under the
+      king's pillow, in his soup, even in the royal toilet. The king was furious, but he couldn't seem to stop Jokester.
+      And then, one day, the people of the kingdom discovered that the jokes left by Jokester were so funny that they
+      couldn't help but laugh. And once they started laughing, they couldn't stop.
+    </ScrollArea>
+  );
+}
+```
 
-## Learn More
+## Documentation
 
-To learn more about Next.js, take a look at the following resources:
+Visit [Docs](https://lina.sameer.sh)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Credits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Built on top of:
 
-## Deploy on Vercel
+- [Radix UI's Scroll Area](https://radix-ui.com/primitives/docs/components/scroll-area) by [Radix UI](https://radix-ui.com)
+- [Base UI's Scroll Area](https://base-ui.com/react/components/scroll-area) by [Base UI](https://base-ui.com/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
