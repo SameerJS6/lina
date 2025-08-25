@@ -4,6 +4,7 @@ import { Suspense, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { ScrollArea, ScrollBar } from "@/registry/radix-ui/scroll-area";
 import { type RegistryKeys } from "@/registry/registry";
+import posthog from "posthog-js";
 
 import CopyButton from "@/components/copy-button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -44,6 +45,18 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
     [registryURL, command]
   );
 
+  const handleCopy = () => {
+    const text = commands[selectedPackageManager];
+    navigator.clipboard.writeText(text);
+    try {
+      posthog.capture("cli_copy", {
+        component: name,
+        variant,
+        package_manager: selectedPackageManager,
+      });
+    } catch {}
+  };
+
   return (
     <Tabs value={selectedPackageManager} onValueChange={setPackageManager} className={cn("mt-4 flex flex-col gap-0")}>
       <div className="bg-surface flex items-center justify-between rounded-t-xl px-4 pt-4 pb-2">
@@ -64,10 +77,7 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
             <TabsIndicator className="z-5" />
           </TabsList>
         </div>
-        <CopyButton
-          className="z-10 !opacity-100"
-          onCopy={() => navigator.clipboard.writeText(commands[selectedPackageManager])}
-        />
+        <CopyButton className="z-10 !opacity-100" onCopy={handleCopy} />
       </div>
       {Object.keys(commands).map((key, index) => (
         <TabsContent key={index} value={key} className="mt-0">
