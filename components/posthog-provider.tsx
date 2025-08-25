@@ -6,7 +6,7 @@ import { PostHogProvider as PHProvider } from "posthog-js/react";
 
 export default function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    // if (process.env.NODE_ENV === "development") return;
+    if (process.env.NODE_ENV === "development") return;
 
     if (typeof window === "undefined") return;
 
