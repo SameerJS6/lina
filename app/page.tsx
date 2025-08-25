@@ -12,14 +12,6 @@ type HomeProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>; // TODO: IMPROVE TYPE SAFETY OF SEARCH PARAMS (USE NUQS)
 };
 
-// Pre-generate static pages for both variants at build time
-export async function generateStaticParams() {
-  return [{ variant: "radix" }, { variant: "base" }];
-}
-
-export const dynamicParams = false;
-export const revalidate = 3600; // Revalidate every hour
-
 export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className="container space-y-8">
