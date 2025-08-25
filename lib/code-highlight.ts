@@ -40,11 +40,21 @@ async function highlight(code: string, lang: BundledLanguage) {
   }) as JSX.Element;
 }
 
+// Simple in-memory cache for component code
+const codeCache = new Map<string, { code: string; highlightedCode: JSX.Element } | null>();
+
 async function getComponentCode(
   name: string,
   lang: BundledLanguage,
   customFilePath?: string
 ): Promise<{ code: string; highlightedCode: JSX.Element } | null> {
+  const cacheKey = `${name}-${lang}-${customFilePath || ""}`;
+
+  // Check cache first
+  if (codeCache.has(cacheKey)) {
+    return codeCache.get(cacheKey)!;
+  }
+
   try {
     let rawContent = "";
 
@@ -60,14 +70,20 @@ async function getComponentCode(
     }
 
     if (!rawContent.trim()) {
+      codeCache.set(cacheKey, null);
       return null;
     }
 
     const highlightedCode = await highlight(rawContent, lang);
+    const result = { code: rawContent, highlightedCode };
 
-    return { code: rawContent, highlightedCode };
+    // Cache the result
+    codeCache.set(cacheKey, result);
+
+    return result;
   } catch (error) {
     console.error("Error getting component code", error);
+    codeCache.set(cacheKey, null);
     return null;
   }
 }
