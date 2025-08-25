@@ -7,6 +7,8 @@ import Navbar from "@/components/navbar";
 import PostHogProvider from "@/components/posthog-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 
+import { META_THEME_COLORS } from "@/hooks/use-meta-color";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -79,6 +81,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+        <meta name="theme-color" content={META_THEME_COLORS.light} />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}>
         <PostHogProvider>
           <ThemeProvider defaultTheme="system" attribute="class" enableSystem disableTransitionOnChange>
