@@ -25,7 +25,12 @@ export default function Navbar() {
         </Link>
         <div className="flex h-5 items-center">
           <Button variant="ghost" size="icon" asChild>
-            <Link target="_blank" href="https://github.com/SameerJS6/lina" rel="noopener noreferrer">
+            <Link
+              target="_blank"
+              href="https://github.com/SameerJS6/lina"
+              rel="noopener noreferrer"
+              aria-label="View project on GitHub"
+            >
               <svg
                 width="1024"
                 height="1024"

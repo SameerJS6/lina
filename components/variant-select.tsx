@@ -39,8 +39,12 @@ export default function VariantSelect({ currentVariant, size = "default" }: Vari
         {isHydrated ? <SelectValue placeholder="Configuration:" /> : <Skeleton className="h-4 w-16" />}
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="radix">Radix UI</SelectItem>
-        <SelectItem value="base">Base UI</SelectItem>
+        <SelectItem value="radix" aria-label="Switch to Radix UI variant">
+          Radix UI
+        </SelectItem>
+        <SelectItem value="base" aria-label="Switch to Base UI variant">
+          Base UI
+        </SelectItem>
       </SelectContent>
     </Select>
   );
