@@ -17,6 +17,9 @@ export async function generateStaticParams() {
   return [{ variant: "radix" }, { variant: "base" }];
 }
 
+export const dynamicParams = false;
+export const revalidate = 3600; // Revalidate every hour
+
 export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className="container space-y-8">
