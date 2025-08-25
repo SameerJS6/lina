@@ -5,8 +5,15 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
+import { useMetaColor } from "@/hooks/use-meta-color";
+
 export default function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
+  const { metaColor, setMetaColor } = useMetaColor();
+
+  React.useEffect(() => {
+    setMetaColor(metaColor);
+  }, [metaColor, setMetaColor]);
 
   const toggleTheme = React.useCallback(() => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
