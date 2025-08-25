@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import posthog from "posthog-js";
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -27,6 +28,9 @@ export default function VariantSelect({ currentVariant, size = "default" }: Vari
     startTransition(() => {
       router.replace(newUrl, { scroll: false });
     });
+    try {
+      posthog.capture("variant_change", { to: value });
+    } catch {}
   };
 
   return (

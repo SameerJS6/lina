@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Tabs as TabsPrimitive } from "@base-ui-components/react/tabs";
+import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
 
@@ -22,7 +23,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
   );
 }
 
-function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Tab>) {
+function TabsTrigger({ className, onClick, value, ...props }: React.ComponentProps<typeof TabsPrimitive.Tab>) {
   return (
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
@@ -30,6 +31,15 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
         "dark:data-[selected]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
+      onClick={(e) => {
+        try {
+          if (value) {
+            posthog.capture("tabs_select", { value });
+          }
+        } catch {}
+        onClick?.(e);
+      }}
+      value={value}
       {...props}
     />
   );

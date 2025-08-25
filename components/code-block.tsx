@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useState, type JSX } from "react";
 import { ScrollArea, ScrollBar } from "@/registry/radix-ui/scroll-area";
+import posthog from "posthog-js";
 import type { BundledLanguage } from "shiki/bundle/web";
 
 import CopyButton from "@/components/copy-button";
@@ -27,6 +28,9 @@ export default function CodeBlock({ code, lang, initial, preHighlighted, classNa
 
     const clone = pre.cloneNode(true) as HTMLElement;
     navigator.clipboard.writeText(clone.textContent || "");
+    try {
+      posthog.capture("code_copy", { lang, length: (clone.textContent || "").length });
+    } catch {}
   };
 
   useLayoutEffect(() => {

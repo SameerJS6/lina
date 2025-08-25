@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <header className="container">
       <nav className="flex items-center justify-between gap-4 py-4">
-        <Link href="/" className={buttonVariants({ variant: "ghost", size: "sm", className: "h-10" })}>
+        <Link href="/" className={buttonVariants({ variant: "ghost", size: "sm", className: "h-10 max-lg:-ml-4" })}>
           <svg
             width="270"
             height="270"
