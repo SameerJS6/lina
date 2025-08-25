@@ -93,7 +93,7 @@ export default function AdaptiveMask() {
       <CardHeader className="relative">
         <CardTitle className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Adaptive Mask</CardTitle>
         <CardDescription className="text-zinc-600 dark:text-zinc-400">
-          Dyanmic masking that responds to content.
+          Dynamic masking that responds to content.
         </CardDescription>
       </CardHeader>
       <CardContent className="relative space-y-4">

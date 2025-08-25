@@ -31,7 +31,7 @@ export default async function Home({ searchParams }: HomeProps) {
           Drop-in Replacement
         </div>
         <h1 className="font-inter leading-tighter text-primary w-full text-4xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:text-5xl xl:tracking-tighter">
-          The Adaptive Scroll Solution for Modern UIs
+          The Adaptive Scroll Area for Modern UIs
         </h1>
 
         <p className="text-foreground max-w-4xl text-base text-balance sm:text-lg">
