@@ -12,6 +12,9 @@ type HomeProps = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>; // TODO: IMPROVE TYPE SAFETY OF SEARCH PARAMS (USE NUQS)
 };
 
+export const dynamicParams = false;
+export const revalidate = 3600; // Revalidate every hour
+
 export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className="container space-y-8">
