@@ -135,14 +135,10 @@
     width: calc(var(--spacing) * 16);
     padding-right: calc(var(--spacing) * 6);
     text-align: right;
-    color: var(--color-code-number);
+    color: var(--color-foreground);
     background-color: var(--color-surface);
     position: sticky;
     left: 0;
-  }
-
-  [data-line-numbers] [data-highlighted-line][data-line]::before {
-    background-color: var(--color-code-highlight);
   }
 
   [data-line] {
@@ -161,12 +157,6 @@
     }
   }
 
-  [data-highlighted-line],
-  [data-highlighted-chars] {
-    position: relative;
-    background-color: var(--color-code-highlight);
-  }
-
   [data-highlighted-line] {
     &:after {
       position: absolute;
@@ -177,14 +167,6 @@
       content: "";
       background-color: var(--border);
     }
-  }
-
-  [data-highlighted-chars] {
-    border-radius: var(--radius-sm);
-    padding-inline: 0.3rem;
-    padding-block: 0.1rem;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
   }
 }
 
