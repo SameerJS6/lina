@@ -1,10 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { Drawer as DrawerPrimitive, Content as VaulDrawerContent } from "vaul";
 
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { Drawer as DrawerPrimitive, Content as VaulDrawerContent } from "vaul";
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";

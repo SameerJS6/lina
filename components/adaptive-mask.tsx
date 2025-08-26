@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
 import {
   calculateContentPosition,
   getCurrentPhase,

@@ -4,9 +4,11 @@ import type { BundledLanguage } from "shiki/bundle/web";
 
 import { Loader } from "lucide-react";
 
-import CodeBlock from "@/components/code-block";
+import CodeDisplaySection from "@/components/code-display-block";
+import RenderPreview from "@/components/render-preview";
 import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import VariantSelect from "@/components/variant-select";
+
 import { getComponentCode } from "@/lib/code-highlight";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +18,6 @@ type ComponentDetailsProps = {
   className?: string;
   lang?: BundledLanguage;
   align?: "center" | "start" | "end";
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>; // TODO: IMPROVE TYPE SAFETY OF SEARCH PARAMS (USE NUQS)
 };
 
 export default async function ComponentPreview({
@@ -25,22 +26,17 @@ export default async function ComponentPreview({
   lang = "tsx",
   hideCode = false,
   align = "center",
-  searchParams,
 }: ComponentDetailsProps) {
-  const variant = (await searchParams)?.variant === "base" ? "base" : "radix";
-
   const registryEntry = Index[name];
-  const componentName = `${registryEntry.name}-${variant}`;
-  const codeData = await getComponentCode(componentName, lang);
+  const [radixCodeData, baseCodeData] = await Promise.all([
+    getComponentCode(`${registryEntry.name}-radix`, lang),
+    getComponentCode(`${registryEntry.name}-base`, lang),
+  ]);
 
-  const Preview = !registryEntry ? (
-    <p className="text-muted-foreground text-sm">
-      Component <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm">{name}</code> not
-      found in special registry.
-    </p>
-  ) : (
-    React.createElement(registryEntry.variants[variant])
-  );
+  const variantData = {
+    base: { code: baseCodeData },
+    radix: { code: radixCodeData },
+  } as const;
 
   return (
     <div className={cn("group relative flex min-w-0 flex-col space-y-2", className)}>
@@ -55,7 +51,7 @@ export default async function ComponentPreview({
           )}
         </div>
         <TabsContent value="preview" className="focus-ring relative rounded-xl border p-4">
-          <VariantSelect currentVariant={variant} />
+          <VariantSelect />
           <div
             className={cn("flex min-h-[350px] w-full justify-center p-10", {
               "items-center": align === "center",
@@ -71,32 +67,12 @@ export default async function ComponentPreview({
                 </div>
               }
             >
-              {Preview}
+              <RenderPreview name={name} />
             </React.Suspense>
           </div>
         </TabsContent>
         <TabsContent value="code" className="focus-ring rounded-xl">
-          {!codeData ? (
-            <p className="text-muted-foreground text-sm">
-              No code available. If you think this is an error, please{" "}
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/SameerJS6/lina/issues"
-                className="text-foreground font-medium underline hover:no-underline"
-              >
-                open an issue
-              </a>
-              .
-            </p>
-          ) : (
-            <CodeBlock
-              lang={lang}
-              code={codeData.code}
-              preHighlighted={codeData.highlightedCode}
-              className="[&_pre]:max-h-[435px]"
-            />
-          )}
+          <CodeDisplaySection variantData={variantData} language={lang} maxHeight="[&_pre]:max-h-[435px]" />
         </TabsContent>
       </Tabs>
     </div>

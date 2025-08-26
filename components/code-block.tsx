@@ -2,10 +2,12 @@
 
 import { useLayoutEffect, useRef, useState, type JSX } from "react";
 import { ScrollArea, ScrollBar } from "@/registry/radix-ui/scroll-area";
-import posthog from "posthog-js";
 import type { BundledLanguage } from "shiki/bundle/web";
 
+import posthog from "posthog-js";
+
 import CopyButton from "@/components/copy-button";
+
 import { highlight } from "@/lib/code-highlight";
 import { cn } from "@/lib/utils";
 
