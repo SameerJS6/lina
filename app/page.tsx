@@ -8,14 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import Usage from "@/components/usage";
 import Why from "@/components/why";
 
-type HomeProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>; // TODO: IMPROVE TYPE SAFETY OF SEARCH PARAMS (USE NUQS)
-};
-
-export const dynamicParams = false;
-export const revalidate = 3600;
-
-export default async function Home({ searchParams }: HomeProps) {
+export default async function Home() {
   return (
     <main className="container space-y-8">
       <section className="flex flex-col items-center gap-2 py-8 text-center sm:px-6 md:py-16 lg:py-20 xl:gap-4">
@@ -50,11 +43,11 @@ export default async function Home({ searchParams }: HomeProps) {
       <section className="space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16 xl:space-y-24">
         <Features />
         <section className="grid w-full min-w-0 gap-10 lg:grid-cols-2 lg:gap-4">
-          <Installation searchParams={searchParams} />
-          <Usage searchParams={searchParams} />
+          <Installation />
+          <Usage />
         </section>
         <Why />
-        <Examples searchParams={searchParams} />
+        <Examples />
       </section>
       <PageWideScrollMask />
     </main>
