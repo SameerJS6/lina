@@ -42,6 +42,10 @@ export default function PageWideScrollMask() {
       <motion.div
         aria-hidden="true"
         className="from-background pointer-events-none fixed top-0 z-50 h-16 w-full bg-gradient-to-b to-transparent"
+        initial={{
+          opacity: 0,
+          y: -16,
+        }}
         animate={{
           opacity: showTopMask ? 1 : 0,
           y: showTopMask ? 0 : -16,
@@ -57,6 +61,10 @@ export default function PageWideScrollMask() {
       <motion.div
         aria-hidden="true"
         className="from-background pointer-events-none fixed bottom-0 z-50 h-16 w-full bg-gradient-to-t to-transparent"
+        initial={{
+          opacity: 0,
+          y: 16,
+        }}
         animate={{
           opacity: showBottomMask ? 1 : 0,
           y: showBottomMask ? 0 : 16,
