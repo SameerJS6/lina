@@ -155,8 +155,8 @@ const ScrollBar = React.forwardRef<
         data-slot="scroll-area-thumb"
         className={cn(
           "bg-border relative flex-1 rounded-full transition-[scale]",
-          orientation === "vertical" && "my-1 hover:scale-y-110 active:scale-y-95",
-          orientation === "horizontal" && "hover:scale-x-102 active:scale-x-98"
+          orientation === "vertical" && "my-1 active:scale-y-95",
+          orientation === "horizontal" && "active:scale-x-98"
         )}
       />
     </ScrollAreaPrimitive.Scrollbar>
