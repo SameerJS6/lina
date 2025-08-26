@@ -8,8 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Skeleton } from "@/components/ui/skeleton";
 
 import { cn } from "@/lib/utils";
-import { useVariantStore } from "@/lib/variant-store";
-import { type ComponentLibrary } from "@/lib/variant-utils";
+import { useVariantStore, type Variant } from "@/lib/variant-store";
 
 type VariantSelectProps = {
   size?: "sm" | "default";
@@ -23,7 +22,7 @@ export default function VariantSelect({ size = "default" }: VariantSelectProps) 
     setIsHydrated(true);
   }, []);
 
-  const handleVariantChange = (value: ComponentLibrary) => {
+  const handleVariantChange = (value: Variant) => {
     try {
       setVariant(value);
       posthog.capture("variant_change", { to: value });
