@@ -1,7 +1,8 @@
 "use client";
 
-import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
+import { create } from "zustand";
 
 type PackageManager = "pnpm" | "npm" | "bun" | "yarn";
 

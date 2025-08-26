@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import { Tabs as TabsPrimitive } from "@base-ui-components/react/tabs";
 import posthog from "posthog-js";
 
