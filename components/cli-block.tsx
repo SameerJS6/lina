@@ -1,18 +1,20 @@
 "use client";
 
 import { Suspense, useEffect, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
 import { ScrollArea, ScrollBar } from "@/registry/radix-ui/scroll-area";
 import { type RegistryKeys } from "@/registry/registry";
+
 import posthog from "posthog-js";
 
 import CopyButton from "@/components/copy-button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsIndicator, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import VariantSelect from "@/components/variant-select";
+
 import { usePackageManagerStore, type PackageManager } from "@/lib/package-manager-store";
 import { convertNpmCommand } from "@/lib/package-manager-utils";
 import { cn } from "@/lib/utils";
+import { useVariantStore } from "@/lib/variant-store";
 
 type CLIBlockProps = {
   name?: RegistryKeys;
@@ -29,15 +31,14 @@ export default function CLIBlock({ name, command }: CLIBlockProps) {
 }
 
 function CLIBlockContent({ name, command }: CLIBlockProps) {
-  const searchParams = useSearchParams();
-  const variant = searchParams?.get("variant") === "base" ? "base" : "radix";
+  const { currentVariant } = useVariantStore();
   const { selectedPackageManager, setPackageManager, isLoading, setLoading } = usePackageManagerStore();
 
   useEffect(() => {
     setLoading(false);
   }, [setLoading]);
 
-  const componentName = name === "lina" ? `${name}-${variant}` : `${name}-demo-${variant}`;
+  const componentName = name === "lina" ? `${name}-${currentVariant}` : `${name}-demo-${currentVariant}`;
   const registryURL = `https://lina.sameer.sh/r/${componentName}.json`;
 
   const commands = useMemo(
@@ -51,7 +52,7 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
     try {
       posthog.capture("cli_copy", {
         component: name,
-        variant,
+        variant: currentVariant,
         package_manager: selectedPackageManager,
       });
     } catch {}
@@ -62,7 +63,7 @@ function CLIBlockContent({ name, command }: CLIBlockProps) {
       <div className="bg-surface flex items-center justify-between rounded-t-xl px-4 pt-4 pb-2">
         <div className="space-y-3">
           <div>
-            <VariantSelect size="sm" currentVariant={variant} />
+            <VariantSelect size="sm" />
           </div>
           <TabsList className="relative bg-transparent p-0">
             {Object.keys(commands).map((key, index) =>
