@@ -2,11 +2,7 @@ import AnchorHeading from "@/components/anchor-heading";
 import CLIBlock from "@/components/cli-block";
 import ComponentPreview from "@/components/component-preview";
 
-type ExamplesProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-export default function Examples({ searchParams }: ExamplesProps) {
+export default function Examples() {
   return (
     <section className="space-y-6 sm:space-y-8 sm:px-6 lg:space-y-10">
       <div className="space-y-1">
@@ -29,7 +25,7 @@ export default function Examples({ searchParams }: ExamplesProps) {
             </div>
             <CLIBlock name="vertical-scroll" />
           </div>
-          <ComponentPreview name="vertical-scroll" className="my-0" searchParams={searchParams} />
+          <ComponentPreview name="vertical-scroll" className="my-0" />
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="flex min-w-0 flex-col justify-between">
@@ -42,7 +38,7 @@ export default function Examples({ searchParams }: ExamplesProps) {
             </div>
             <CLIBlock name="horizontal-scroll" />
           </div>
-          <ComponentPreview name="horizontal-scroll" className="my-0" searchParams={searchParams} />
+          <ComponentPreview name="horizontal-scroll" className="my-0" />
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="flex min-w-0 flex-col justify-between">
@@ -55,7 +51,7 @@ export default function Examples({ searchParams }: ExamplesProps) {
             </div>
             <CLIBlock name="timezone-select" />
           </div>
-          <ComponentPreview name="timezone-select" searchParams={searchParams} />
+          <ComponentPreview name="timezone-select" />
         </div>
       </div>
     </section>
