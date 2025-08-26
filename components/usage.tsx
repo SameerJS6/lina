@@ -1,19 +1,24 @@
 import AnchorHeading from "@/components/anchor-heading";
-import CodeBlock from "@/components/code-block";
+import CodeDisplaySection from "@/components/code-display-block";
+
 import { getComponentCode } from "@/lib/code-highlight";
 
-type UsageProps = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-export default async function Usage({ searchParams }: UsageProps) {
-  const resolvedSearchParams = await searchParams;
-  const variant = resolvedSearchParams?.variant === "base" ? "base" : "radix";
-
-  const pathToDemoUsage =
-    variant === "base" ? "registry/base-ui/examples/usage-demo.tsx" : "registry/radix-ui/examples/usage-demo.tsx";
+export default async function Usage() {
   const language = "tsx";
-  const codeData = await getComponentCode("", language, pathToDemoUsage);
+
+  const [radixCodeData, baseCodeData] = await Promise.all([
+    getComponentCode("", language, "registry/radix-ui/examples/usage-demo.tsx"),
+    getComponentCode("", language, "registry/base-ui/examples/usage-demo.tsx"),
+  ]);
+
+  const variantData = {
+    base: {
+      code: baseCodeData,
+    },
+    radix: {
+      code: radixCodeData,
+    },
+  } as const;
 
   return (
     <section className="min-w-0 space-y-6 sm:px-6">
@@ -23,27 +28,7 @@ export default async function Usage({ searchParams }: UsageProps) {
           Add the adaptive scroll area component to your project with ease.
         </p>
       </div>
-      {!codeData ? (
-        <p className="text-muted-foreground text-sm">
-          No code available. If you think this is an error, please{" "}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/SameerJS6/lina/issues"
-            className="text-foreground font-medium underline hover:no-underline"
-          >
-            open an issue
-          </a>
-          .
-        </p>
-      ) : (
-        <CodeBlock
-          lang={language}
-          code={codeData.code}
-          preHighlighted={codeData.highlightedCode}
-          className="[&_pre]:max-h-[400px]"
-        />
-      )}
+      <CodeDisplaySection variantData={variantData} language={language} maxHeight="[&_pre]:max-h-[400px]" />
     </section>
   );
 }
