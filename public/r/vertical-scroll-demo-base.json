@@ -5,7 +5,7 @@
   "title": "Vertical Scroll Area Base Demo",
   "description": "A demo showcasing the vertical scroll area component using Lina's Base UI",
   "registryDependencies": [
-    "https://lina.sameer.sh/r/scroll-area-base.json"
+    "https://lina.sameer.sh/r/lina-base.json"
   ],
   "files": [
     {
