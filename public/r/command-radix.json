@@ -11,7 +11,7 @@
   "registryDependencies": [
     "button",
     "dialog",
-    "https://lina.sameer.sh/r/scroll-area-radix.json"
+    "https://lina.sameer.sh/r/lina-radix.json"
   ],
   "files": [
     {
